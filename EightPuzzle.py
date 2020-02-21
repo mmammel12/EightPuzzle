@@ -2,7 +2,6 @@ import Node
 import math
 import random
 import time
-from numpy import array, reshape
 
 
 def BFS(root):
