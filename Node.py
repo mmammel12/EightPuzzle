@@ -3,16 +3,21 @@ from numpy import array, reshape
 
 
 class Node:
-    def __init__(self, board, parent=None):
+    def __init__(self, board, parent=None, depth=0):
         super().__init__()
         self.children = []
         self.parent = parent
         self.board = board.copy()
         self.colSize = int(math.sqrt(len(board)))
+        self.depth = depth
+        self.fScore = 0
 
     def __eq__(self, value):
         # overload equality operator
         return self.board == value.board
+
+    def setFScore(self, fScore):
+        self.fScore = fScore
 
     def expandNode(self):
         # find zero index
@@ -29,7 +34,7 @@ class Node:
 
     def _createChild(self, board):
         # create child node with new board state
-        child = Node(board, self)
+        child = Node(board, self, self.depth + 1)
         self.children.append(child)
 
     def moveLeft(self, index):
