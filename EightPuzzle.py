@@ -166,6 +166,18 @@ def main():
 
         runBFS(root)
         runAStar(root)
+
+        board = []
+        if math.sqrt(boardSize).is_integer():
+            for i in range(boardSize):
+                board.append(i)
+        random.shuffle(board)
+        print("----------------------------")
+        print("Board 3:\n")
+        printBoard(board)
+        root = Node.Node(board)
+
+        runAStar(root)
     else:
         print("Board size must be a square number")
 
