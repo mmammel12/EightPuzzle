@@ -1,5 +1,4 @@
 import math
-from numpy import array, reshape
 
 
 class Node:
@@ -101,6 +100,11 @@ class Node:
         return self.parent is not None
 
     def printBoard(self):
-        # using numpy to reshape and print the board
-        npBoard = array(self.board).reshape((self.colSize, self.colSize))
-        print(npBoard)
+        boardStr = ""
+        for i in range(self.colSize):
+            boardStr += "["
+            for j in range(self.colSize):
+                boardStr += " {} ".format(self.board[self.colSize * i + j])
+            boardStr += "]\n"
+
+        print(boardStr)

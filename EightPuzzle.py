@@ -54,12 +54,12 @@ def A_Star(root):
     currentNode = root
     openList.append(currentNode)
 
-    while (keepGoing):
+    while keepGoing:
         minFScore = 10000
         for node in openList:
-            if (node.parent is not None):
+            if node.parent is not None:
                 node.setFScore(calcFScore(node))
-                if (node.fScore < minFScore):
+                if node.fScore < minFScore:
                     currentNode = node
                     minFScore = node.fScore
 
@@ -69,7 +69,7 @@ def A_Star(root):
         # expand all moves for current node
         currentNode.expandNode()
         for child in currentNode.children:
-            if (child.isGoal()):
+            if child.isGoal():
                 keepGoing = False
                 solutionPath = getGoalPath(child)
             if child not in openList and child not in closedList:
@@ -127,9 +127,14 @@ def runAStar(root):
 
 def printBoard(board):
     colSize = int(math.sqrt(len(board)))
-    npBoard = array(board).reshape((colSize, colSize))
-    print("Initial Board:")
-    print(npBoard)
+    boardStr = ""
+    for i in range(colSize):
+        boardStr += "["
+        for j in range(colSize):
+            boardStr += " {} ".format(board[colSize * i + j])
+        boardStr += "]\n"
+
+    print(boardStr)
 
 
 def main():
