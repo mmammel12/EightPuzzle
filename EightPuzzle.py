@@ -33,6 +33,7 @@ def BFS(root):
 
     if len(solutionPath) > 0:
         for board in solutionPath:
+            print()
             board.printBoard()
     else:
         print("\nNo solution found\n")
@@ -41,20 +42,21 @@ def BFS(root):
 def getGoalPath(goalNode):
     currentNode = goalNode
     nodes = [goalNode]
-    while currentNode.parent != None:
+    while currentNode.hasParent():
         currentNode = currentNode.parent
         nodes.append(currentNode)
-    return nodes.reverse()
+    return nodes
 
 
 def main():
     boardSize = 9
+    # If boardSize comes from user input it needs to be checked to see if it is square
     if math.sqrt(boardSize).is_integer():
         colSize = int(math.sqrt(boardSize))
-        board = []
-        for i in range(boardSize):
-            board.append(i)
-        random.shuffle(board)
+        # the following three boards run in a reasonable time for BFS
+        # board = [2, 5, 3, 1, 6, 0, 4, 7, 8]
+        # board = [1, 6, 2, 7, 4, 3, 5, 0, 8]
+        board = [0, 3, 6, 1, 5, 8, 4, 2, 7]
         npBoard = array(board).reshape((colSize, colSize))
         print("Initial Board:")
         print(npBoard)
@@ -64,12 +66,11 @@ def main():
         startTime = time.time()
         BFS(root)
         endTime = time.time()
-        print("BFS took: " + (endTime - startTime) + " seconds")
+        elapsedTime = endTime - startTime
+        print("\nBFS took: {:.2f} seconds".format(elapsedTime))
     else:
         print("Board size must be a square number")
-    input()
 
 
 if __name__ == "__main__":
     main()
-
