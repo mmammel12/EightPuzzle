@@ -173,7 +173,7 @@ def main():
                 board.append(i)
         random.shuffle(board)
         print("----------------------------")
-        print("Board 3:\n")
+        print("Board 4:\n")
         printBoard(board)
         root = Node.Node(board)
 
