@@ -122,7 +122,6 @@ def runAStar(root):
     endTime = time.time()
     elapsedTime = endTime - startTime
     print("\nA* took: {:.4f} seconds\n".format(elapsedTime))
-    print("----------------------------")
 
 
 def printBoard(board):
@@ -151,6 +150,7 @@ def main():
         runAStar(root)
 
         board = [1, 6, 2, 7, 4, 3, 5, 0, 8]
+        print("----------------------------")
         print("Board 2:\n")
         printBoard(board)
         root = Node.Node(board)
@@ -159,6 +159,7 @@ def main():
         runAStar(root)
 
         board = [0, 3, 6, 1, 5, 8, 4, 2, 7]
+        print("----------------------------")
         print("Board 3:\n")
         printBoard(board)
         root = Node.Node(board)
