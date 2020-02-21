@@ -56,7 +56,7 @@ class Node:
 
     def moveUp(self, index):
         # move up
-        if index - self.colSize > 0:
+        if index - self.colSize >= 0:
             # element can move up
             newBoard = self.board.copy()
             newBoard[index], newBoard[index - self.colSize] = (
@@ -74,6 +74,7 @@ class Node:
                 newBoard[index + self.colSize],
                 newBoard[index],
             )
+            self._createChild(newBoard)
 
     def isGoal(self):
         # check for goal state
@@ -91,8 +92,10 @@ class Node:
 
         return isGoal
 
+    def hasParent(self):
+        return self.parent is not None
+
     def printBoard(self):
         # using numpy to reshape and print the board
         npBoard = array(self.board).reshape((self.colSize, self.colSize))
         print(npBoard)
-
