@@ -102,9 +102,9 @@ class Node:
     def printBoard(self):
         boardStr = ""
         for i in range(self.colSize):
-            boardStr += "["
+            boardStr += "[ "
             for j in range(self.colSize):
-                boardStr += " {} ".format(self.board[self.colSize * i + j])
+                boardStr += "{} ".format(self.board[self.colSize * i + j])
             boardStr += "]\n"
 
         print(boardStr)

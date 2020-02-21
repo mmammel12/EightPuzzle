@@ -128,9 +128,9 @@ def printBoard(board):
     colSize = int(math.sqrt(len(board)))
     boardStr = ""
     for i in range(colSize):
-        boardStr += "["
+        boardStr += "[ "
         for j in range(colSize):
-            boardStr += " {} ".format(board[colSize * i + j])
+            boardStr += "{} ".format(board[colSize * i + j])
         boardStr += "]\n"
 
     print(boardStr)
