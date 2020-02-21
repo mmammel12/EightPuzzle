@@ -122,6 +122,7 @@ def runAStar(root):
     endTime = time.time()
     elapsedTime = endTime - startTime
     print("\nA* took: {:.4f} seconds\n".format(elapsedTime))
+    print("----------------------------")
 
 
 def printBoard(board):
