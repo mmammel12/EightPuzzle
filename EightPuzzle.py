@@ -25,7 +25,6 @@ def BFS(root):
         for child in currentNode.children:
             if child.isGoal():
                 keepGoing = False
-                closedList.append(child)
                 solutionPath = getGoalPath(child)
             if child not in openList and child not in closedList:
                 openList.append(child)
@@ -72,7 +71,6 @@ def A_Star(root):
         for child in currentNode.children:
             if child.isGoal():
                 keepGoing = False
-                closedList.append(child)
                 solutionPath = getGoalPath(child)
             if child not in openList and child not in closedList:
                 openList.append(child)
