@@ -3,7 +3,6 @@ import math
 
 class Node:
     def __init__(self, board, parent=None, depth=0):
-        super().__init__()
         self.children = []
         self.parent = parent
         self.board = board.copy()
@@ -93,7 +92,6 @@ class Node:
                 # final value should be 0
                 if value != 0:
                     isGoal = False
-
         return isGoal
 
     def hasParent(self):
@@ -101,6 +99,7 @@ class Node:
 
     def printBoard(self):
         boardStr = ""
+        # print board as a matrix instead of one dimensional list
         for i in range(self.colSize):
             boardStr += "[ "
             for j in range(self.colSize):

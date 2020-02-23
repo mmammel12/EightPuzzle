@@ -128,6 +128,7 @@ def runAStar(root):
 def printBoard(board):
     colSize = int(math.sqrt(len(board)))
     boardStr = ""
+    # print board as a matrix instead of one dimensional list
     for i in range(colSize):
         boardStr += "[ "
         for j in range(colSize):
@@ -141,7 +142,6 @@ def main():
     boardSize = 9
     # if boardSize comes from user input it needs to be checked to see if it is square
     if math.sqrt(boardSize).is_integer():
-        # the following three boards run in a reasonable time for BFS
         board = [2, 5, 3, 1, 6, 0, 4, 7, 8]
         print("Board 1:\n")
         printBoard(board)
