@@ -17,11 +17,11 @@ def BFS(root):
         solutionPath.append(root)
 
     while keepGoing:
+        # update open and close lists
         currentNode = openList.pop(0)
         closedList.append(currentNode)
-        # expand all moves for current node
+        # generate child board states and check for goal
         currentNode.expandNode()
-        # check if one of the children is the goal state
         for child in currentNode.children:
             if child.isGoal():
                 keepGoing = False
@@ -57,16 +57,16 @@ def A_Star(root):
     while keepGoing:
         minFScore = 10000
         for node in openList:
+            # calculate f-score to decide which node to check
             if node.parent is not None:
                 node.setFScore(calcFScore(node))
                 if node.fScore < minFScore:
                     currentNode = node
                     minFScore = node.fScore
-
+        # update open and closed lists
         openList.remove(currentNode)
         closedList.append(currentNode)
-
-        # expand all moves for current node
+        # generate child board states and check for goal
         currentNode.expandNode()
         for child in currentNode.children:
             if child.isGoal():
@@ -100,6 +100,7 @@ def calcFScore(node):
 
 
 def getGoalPath(goalNode):
+    # climb up the tree to find full path
     currentNode = goalNode
     nodes = [goalNode]
     while currentNode.hasParent():
@@ -113,8 +114,7 @@ def runBFS(root):
     startTime = time.time()
     BFS(root)
     endTime = time.time()
-    elapsedTime = endTime - startTime
-    print("\nBFS took: {:.4f} seconds\n".format(elapsedTime))
+    print("\nBFS took: {:.4f} seconds\n".format(endTime - startTime))
 
 
 def runAStar(root):
@@ -122,8 +122,7 @@ def runAStar(root):
     startTime = time.time()
     A_Star(root)
     endTime = time.time()
-    elapsedTime = endTime - startTime
-    print("\nA* took: {:.4f} seconds\n".format(elapsedTime))
+    print("\nA* took: {:.4f} seconds\n".format(endTime - startTime))
 
 
 def printBoard(board):
