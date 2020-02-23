@@ -35,6 +35,7 @@ def BFS(root):
         for board in solutionPath:
             print()
             board.printBoard()
+            print("Nodes Checked: {}".format(len(closedList)))
     else:
         print("\nNo solution found\n")
 
@@ -80,6 +81,7 @@ def A_Star(root):
         for board in solutionPath:
             print()
             board.printBoard()
+            print("Nodes Checked: {}".format(len(closedList)))
     else:
         print("\nNo solution found\n")
 
