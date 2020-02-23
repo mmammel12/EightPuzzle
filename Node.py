@@ -8,7 +8,7 @@ class Node:
         self.board = board.copy()
         self.colSize = int(math.sqrt(len(board)))
         self.depth = depth
-        self.fScore = 0
+        self.fScore = None
 
     def __eq__(self, value):
         # overload equality operator

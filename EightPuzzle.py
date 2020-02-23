@@ -59,7 +59,8 @@ def A_Star(root):
         for node in openList:
             # calculate f-score to decide which node to check
             if node.parent is not None:
-                node.setFScore(calcFScore(node))
+                if node.fScore is None:
+                    node.setFScore(calcFScore(node))
                 if node.fScore < minFScore:
                     currentNode = node
                     minFScore = node.fScore
@@ -146,6 +147,7 @@ def main():
         print("Board 1:\n")
         printBoard(board)
         root = Node.Node(board)
+        root.setFScore(0)
 
         runBFS(root)
         runAStar(root)
@@ -155,6 +157,7 @@ def main():
         print("Board 2:\n")
         printBoard(board)
         root = Node.Node(board)
+        root.setFScore(0)
 
         runBFS(root)
         runAStar(root)
@@ -164,6 +167,7 @@ def main():
         print("Board 3:\n")
         printBoard(board)
         root = Node.Node(board)
+        root.setFScore(0)
 
         runBFS(root)
         runAStar(root)
